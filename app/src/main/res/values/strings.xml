@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TestApplication</string>
+    <string name="app_name">Garage</string>
     <string name="image">image</string>
     <string name="account_amp_settings"><![CDATA[Account & Settings]]></string>
     <string name="md_rashed_pervez">Md Rashed Pervez</string>
