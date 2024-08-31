@@ -2,11 +2,10 @@ package com.app.testapplication
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
-import androidx.appcompat.app.AppCompatActivity
+import com.app.testapplication.base.BaseActivity
 import com.app.testapplication.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
     private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
