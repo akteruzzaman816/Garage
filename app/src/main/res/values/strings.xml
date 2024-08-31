@@ -19,4 +19,8 @@
     <string name="refer_garage">Refer Garage</string>
     <string name="log_out">Log Out</string>
     <string name="version_1_0">Version 1.0</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="continue_txt">Continue</string>
+    <string name="enter_your_pin">Enter your PIN</string>
 </resources>

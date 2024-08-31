@@ -5,7 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
@@ -76,9 +75,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToDashboardActivity() {
-        Log.d("SplashActivity", "Navigating to Dashboard")
-
-        val intent = Intent(this, MainActivity::class.java)
+        val intent = Intent(this, SignUpActivity::class.java)
         startActivity(intent)
         finish()
     }
@@ -104,7 +101,7 @@ class SplashActivity : AppCompatActivity() {
         shadowViewAlpha: Float,
         angle: Float? = null,
         completion: (() -> Unit)? = null
-    ) = with(binding){
+    ) = with(binding) {
         label.animate().alpha(alpha).setDuration(300).setListener(null).start()
 
         angle?.let {
@@ -113,7 +110,7 @@ class SplashActivity : AppCompatActivity() {
                 3f,
                 trig[Segment.X]!!,
                 trig[Segment.Y]!!,
-                ContextCompat.getColor(this@SplashActivity,R.color.black)
+                ContextCompat.getColor(this@SplashActivity, R.color.black)
             )
         }
 

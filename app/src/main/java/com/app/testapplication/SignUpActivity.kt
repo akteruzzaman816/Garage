@@ -4,19 +4,20 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.app.testapplication.databinding.ActivityMainBinding
+import com.app.testapplication.databinding.ActivitySignUpBinding
 
-class MainActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityMainBinding
+class SignUpActivity : AppCompatActivity() {
+
+    private lateinit var binding: ActivitySignUpBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityMainBinding.inflate(layoutInflater)
+        binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         binding.apply {
-            // profile
-            imgProfile.setOnClickListener {
-                val intent = Intent(this@MainActivity, AccountSettingsActivity::class.java)
+            // continue
+            btnContinue.setOnClickListener {
+                val intent = Intent(this@SignUpActivity, PinVerificationActivity::class.java)
                 startActivity(intent)
             }
         }

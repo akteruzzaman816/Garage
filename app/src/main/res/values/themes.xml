@@ -3,7 +3,7 @@
     <style name="Base.Theme.TestApplication" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
-        <item name="colorPrimaryDark">@color/white</item>
+        <item name="colorPrimaryDark">@color/_EDEDED</item>
     </style>
 
     <style name="Theme.TestApplication" parent="Base.Theme.TestApplication" />
