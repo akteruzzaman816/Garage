@@ -108,6 +108,10 @@ class SignUpActivity : BaseActivity() {
             // Show error on the phone input layout
             binding.textLayoutPhone.error = getString(R.string.phone_number_does_not_have_11_digits)
         } else {
+            // trigger notification
+            Utils.createNotificationChannel(this)
+            Utils.showNotification(this)
+
             // Clear any previous errors
             binding.textLayoutPhone.error = null
             val intent = Intent(this, PinVerificationActivity::class.java)

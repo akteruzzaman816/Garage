@@ -12,6 +12,9 @@ class PinVerificationActivity : BaseActivity() {
         binding = ActivityPinVerificationBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        // initial button state
+        setButtonState(false)
+
         binding.apply {
             // continue
             btnContinue.setOnClickListener {
@@ -19,6 +22,25 @@ class PinVerificationActivity : BaseActivity() {
                 startActivity(intent)
                 finish()
             }
+        }
+
+        listenOTP()
+    }
+
+    private fun listenOTP() = with(binding) {
+        otpView.setOtpCompletionListener {
+            if (it.length == 4 && it == "1234") {
+                setButtonState(true)
+            } else setButtonState(false)
+        }
+    }
+
+    private fun setButtonState(enabled: Boolean) {
+        binding.btnContinue.isEnabled = enabled
+        if (enabled) {
+            binding.btnContinue.alpha = 1.0f
+        } else {
+            binding.btnContinue.alpha = 0.8f
         }
     }
 }
