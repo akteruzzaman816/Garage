@@ -8,7 +8,7 @@ android {
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.app.testapplication"
+        applicationId = "com.garageKoi.garage"
         minSdk = 21
         targetSdk = 34
         versionCode = 1
