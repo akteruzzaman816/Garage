@@ -52,7 +52,11 @@ dependencies {
     // sdp
     implementation (libs.sdp.android)
     implementation (libs.ssp.android)
-
+    // otp view
     implementation (libs.otpview)
+
+    // map and location
+    implementation ("com.google.android.gms:play-services-maps:19.0.0")
+    implementation ("com.google.android.gms:play-services-location:21.3.0")
 
 }

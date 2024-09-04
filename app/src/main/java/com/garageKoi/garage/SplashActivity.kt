@@ -1,4 +1,4 @@
-package com.app.testapplication
+package com.garageKoi.garage
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,8 +8,7 @@ import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
-import com.app.testapplication.databinding.ActivitySplashBinding
+import com.garageKoi.garage.databinding.ActivitySplashBinding
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {

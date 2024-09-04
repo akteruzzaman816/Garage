@@ -1,9 +1,9 @@
-package com.app.testapplication
+package com.garageKoi.garage
 
 import android.content.Intent
 import android.os.Bundle
-import com.app.testapplication.base.BaseActivity
-import com.app.testapplication.databinding.ActivityPinVerificationBinding
+import com.garageKoi.garage.base.BaseActivity
+import com.garageKoi.garage.databinding.ActivityPinVerificationBinding
 
 class PinVerificationActivity : BaseActivity() {
     private lateinit var binding: ActivityPinVerificationBinding

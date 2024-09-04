@@ -1,4 +1,4 @@
-package com.app.testapplication;
+package com.garageKoi.garage;
 
 import org.junit.Test;
 

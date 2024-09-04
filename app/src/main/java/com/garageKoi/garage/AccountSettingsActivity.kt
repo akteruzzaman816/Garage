@@ -1,10 +1,10 @@
-package com.app.testapplication
+package com.garageKoi.garage
 
 import android.os.Build
 import android.os.Bundle
 import androidx.annotation.RequiresApi
-import com.app.testapplication.base.BaseActivity
-import com.app.testapplication.databinding.ActivityAccountSettingsBinding
+import com.garageKoi.garage.base.BaseActivity
+import com.garageKoi.garage.databinding.ActivityAccountSettingsBinding
 
 class AccountSettingsActivity : BaseActivity() {
     private lateinit var binding: ActivityAccountSettingsBinding

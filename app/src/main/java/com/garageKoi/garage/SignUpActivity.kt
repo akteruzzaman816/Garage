@@ -1,11 +1,12 @@
-package com.app.testapplication
+package com.garageKoi.garage
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import com.app.testapplication.base.BaseActivity
-import com.app.testapplication.databinding.ActivitySignUpBinding
+import com.garageKoi.garage.base.BaseActivity
+import com.garageKoi.garage.databinding.ActivitySignUpBinding
+import com.garageKoi.garage.utils.Utils
 
 class SignUpActivity : BaseActivity() {
 
