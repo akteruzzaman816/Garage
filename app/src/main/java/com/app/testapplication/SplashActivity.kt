@@ -14,25 +14,19 @@ import com.app.testapplication.databinding.ActivitySplashBinding
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySplashBinding
+    private lateinit var shadowView: View
 
-
-    // Dark view to add light effect
-    private val shadowView: View by lazy {
-        View(this).apply {
-            layoutParams = ViewGroup.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
-            )
-            setBackgroundColor(0x001F2F4F) // Using the equivalent RGBA color in hex
-            alpha = 0.90f
-        }
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        shadowView = View(this).apply {
+            layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
+            alpha = 0.90f
+            setBackgroundColor(android.graphics.Color.argb(0, 31, 38, 79)) // Equivalent to UIColor(red: 0.12, green: 0.15, blue: 0.31, alpha: 0.00)
+        }
 
         setupLabel()
         setupShadowView()
@@ -43,35 +37,16 @@ class SplashActivity : AppCompatActivity() {
         }, 4000) // 4 seconds
     }
 
-    private fun setupLabel() = with(binding) {
-        label.setTextColor(
-            ContextCompat.getColor(this@SplashActivity, R.color.white)
-        ) // Assuming the color is defined in `colors.xml`
-
-        // Basic animation similar to moving the label's center
-        label.animate().apply {
-            duration = 1000
-            translationYBy(this@SplashActivity.resources.displayMetrics.widthPixels.toFloat()) // Move by a specific amount
-            start() // Start the animation
-        }
-
+    private fun setupLabel() = with(binding){
+        label.setTextColor(android.graphics.Color.WHITE)
         label.alpha = 0f
-        label.setShadowLayer(
-            3f,
-            30f,
-            0f,
-            ContextCompat.getColor(this@SplashActivity, R.color.black)
-        ) // Adjust shadow properties
+        label.translationY += resources.displayMetrics.widthPixels
+
+        label.setShadowLayer(3f, 30f, 0f, android.graphics.Color.BLACK)
     }
 
-
     private fun setupShadowView() {
-        // Obtain the root view of the activity
-        val rootView = findViewById<ViewGroup>(android.R.id.content)
-        // Add the shadow view to the root view
-        rootView.addView(shadowView)
-        // Bring the shadow view to the front
-        shadowView.bringToFront()
+        addContentView(shadowView, shadowView.layoutParams)
     }
 
     private fun goToDashboardActivity() {
@@ -81,13 +56,13 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun startShadowAnimation() {
-        animateShadow(0.75f, 0.3f) {
-            animateShadow(1f, 0.2f, 22.5f) {
-                animateShadow(1f, 0.2f, 45f) {
-                    animateShadow(1f, 0.2f, 67.5f) {
-                        animateShadow(1f, 0.2f, 90f) {
-                            animateShadow(1f, 0.3f, 112.5f) {
-                                animateShadow(1f, 0.1f, 135f)
+        animateShadow(0.75f, shadowViewAlpha = 0.3f) {
+            animateShadow(1f, 22.5f, shadowViewAlpha = 0.2f) {
+                animateShadow(1f, 45f, shadowViewAlpha = 0.2f) {
+                    animateShadow(1f, 67.5f, shadowViewAlpha = 0.2f) {
+                        animateShadow(1f, 90f, shadowViewAlpha = 0.2f) {
+                            animateShadow(1f, 112.5f, shadowViewAlpha = 0.3f) {
+                                animateShadow(1f, 135f, shadowViewAlpha = 0.1f)
                             }
                         }
                     }
@@ -96,50 +71,50 @@ class SplashActivity : AppCompatActivity() {
         }
     }
 
-    private fun animateShadow(
-        alpha: Float,
-        shadowViewAlpha: Float,
-        angle: Float? = null,
-        completion: (() -> Unit)? = null
-    ) = with(binding) {
-        label.animate().alpha(alpha).setDuration(300).setListener(null).start()
+    private fun animateShadow(alpha: Float, angle: Float? = null, shadowViewAlpha: Float, completion: (() -> Unit)? = null) {
+        val duration = when (angle) {
+            135f -> 2000L
+            112.5f -> 800L
+            else -> 300L
+        }
+
+        binding.label.animate()
+            .alpha(alpha)
+            .setDuration(duration)
+            .withEndAction {
+                completion?.invoke()
+            }
+            .start()
 
         angle?.let {
             val trig = calcTrig(Segment.H, 10f, it)
-            label.setShadowLayer(
-                3f,
-                trig[Segment.X]!!,
-                trig[Segment.Y]!!,
-                ContextCompat.getColor(this@SplashActivity, R.color.black)
-            )
+            binding.label.setShadowLayer(3f, trig[Segment.X] ?: 0f, trig[Segment.Y] ?: 0f, android.graphics.Color.BLACK)
         }
 
-        shadowView.animate().alpha(shadowViewAlpha).setDuration(300).withEndAction {
-            completion?.invoke()
-        }.start()
+        shadowView.animate()
+            .alpha(shadowViewAlpha)
+            .setDuration(duration)
+            .start()
     }
 
     private fun calcTrig(segment: Segment, size: Float, angle: Float): Map<Segment, Float> {
-        val angleInRadians = Math.toRadians(angle.toDouble()).toFloat()
         return when (segment) {
             Segment.X -> {
                 val x = size
-                val y = (Math.tan(angleInRadians.toDouble()) * x).toFloat()
-                val h = (x / Math.cos(angleInRadians.toDouble())).toFloat()
+                val y = Math.tan(Math.toRadians(angle.toDouble())).toFloat() * x
+                val h = x / Math.cos(Math.toRadians(angle.toDouble())).toFloat()
                 mapOf(Segment.X to x, Segment.Y to y, Segment.H to h)
             }
-
             Segment.Y -> {
                 val y = size
-                val x = (y / Math.tan(angleInRadians.toDouble())).toFloat()
-                val h = (y / Math.sin(angleInRadians.toDouble())).toFloat()
+                val x = y / Math.tan(Math.toRadians(angle.toDouble())).toFloat()
+                val h = y / Math.sin(Math.toRadians(angle.toDouble())).toFloat()
                 mapOf(Segment.X to x, Segment.Y to y, Segment.H to h)
             }
-
             Segment.H -> {
                 val h = size
-                val x = (Math.cos(angleInRadians.toDouble()) * h).toFloat()
-                val y = (Math.sin(angleInRadians.toDouble()) * h).toFloat()
+                val x = Math.cos(Math.toRadians(angle.toDouble())).toFloat() * h
+                val y = Math.sin(Math.toRadians(angle.toDouble())).toFloat() * h
                 mapOf(Segment.X to x, Segment.Y to y, Segment.H to h)
             }
         }
