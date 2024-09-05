@@ -2,13 +2,18 @@ package com.garageKoi.garage
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.garageKoi.garage.databinding.ActivitySplashBinding
+import kotlin.math.cos
+import kotlin.math.sin
+import kotlin.math.tan
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : AppCompatActivity() {
@@ -24,7 +29,7 @@ class SplashActivity : AppCompatActivity() {
         shadowView = View(this).apply {
             layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT)
             alpha = 0.90f
-            setBackgroundColor(android.graphics.Color.argb(0, 31, 38, 79)) // Equivalent to UIColor(red: 0.12, green: 0.15, blue: 0.31, alpha: 0.00)
+            setBackgroundColor(ContextCompat.getColor(this@SplashActivity,R.color.black)) // Equivalent to UIColor(red: 0.12, green: 0.15, blue: 0.31, alpha: 0.00)
         }
 
         setupLabel()
@@ -37,11 +42,11 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun setupLabel() = with(binding){
-        label.setTextColor(android.graphics.Color.WHITE)
+        label.setTextColor(Color.WHITE)
         label.alpha = 0f
         label.translationY += resources.displayMetrics.widthPixels
 
-        label.setShadowLayer(3f, 30f, 0f, android.graphics.Color.BLACK)
+        label.setShadowLayer(3f, 30f, 0f, Color.BLACK)
     }
 
     private fun setupShadowView() {
@@ -99,22 +104,19 @@ class SplashActivity : AppCompatActivity() {
     private fun calcTrig(segment: Segment, size: Float, angle: Float): Map<Segment, Float> {
         return when (segment) {
             Segment.X -> {
-                val x = size
-                val y = Math.tan(Math.toRadians(angle.toDouble())).toFloat() * x
-                val h = x / Math.cos(Math.toRadians(angle.toDouble())).toFloat()
-                mapOf(Segment.X to x, Segment.Y to y, Segment.H to h)
+                val y = tan(Math.toRadians(angle.toDouble())).toFloat() * size
+                val h = size / cos(Math.toRadians(angle.toDouble())).toFloat()
+                mapOf(Segment.X to size, Segment.Y to y, Segment.H to h)
             }
             Segment.Y -> {
-                val y = size
-                val x = y / Math.tan(Math.toRadians(angle.toDouble())).toFloat()
-                val h = y / Math.sin(Math.toRadians(angle.toDouble())).toFloat()
-                mapOf(Segment.X to x, Segment.Y to y, Segment.H to h)
+                val x = size / tan(Math.toRadians(angle.toDouble())).toFloat()
+                val h = size / sin(Math.toRadians(angle.toDouble())).toFloat()
+                mapOf(Segment.X to x, Segment.Y to size, Segment.H to h)
             }
             Segment.H -> {
-                val h = size
-                val x = Math.cos(Math.toRadians(angle.toDouble())).toFloat() * h
-                val y = Math.sin(Math.toRadians(angle.toDouble())).toFloat() * h
-                mapOf(Segment.X to x, Segment.Y to y, Segment.H to h)
+                val x = cos(Math.toRadians(angle.toDouble())).toFloat() * size
+                val y = sin(Math.toRadians(angle.toDouble())).toFloat() * size
+                mapOf(Segment.X to x, Segment.Y to y, Segment.H to size)
             }
         }
     }

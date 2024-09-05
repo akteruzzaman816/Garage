@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Base.Theme.Garage" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your light theme here. -->
@@ -19,7 +19,7 @@
         <item name="windowNoTitle">true</item>
         <item name="windowActionBar">false</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="colorPrimaryDark">#1E274E</item>
+        <item name="colorPrimaryDark">@color/_1E274E</item>
     </style>
 
 

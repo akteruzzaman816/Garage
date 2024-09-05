@@ -24,4 +24,5 @@
     <string name="continue_txt">Continue</string>
     <string name="enter_your_pin">Enter your PIN</string>
     <string name="phone_number_does_not_have_11_digits">Phone number does not have 11 digits</string>
+    <string name="details_page">Details Page</string>
 </resources>

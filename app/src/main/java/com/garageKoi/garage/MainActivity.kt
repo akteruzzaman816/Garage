@@ -117,6 +117,10 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 12f))
         // Show the info window immediately after adding the marker
         marker?.showInfoWindow()
+        googleMap.setOnInfoWindowClickListener {
+            val intent = Intent(this@MainActivity, DetailsPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
