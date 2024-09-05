@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.TestApplication" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Base.Theme.Garage" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimaryDark">@color/_EDEDED</item>
@@ -13,7 +13,7 @@
         <item name="android:maxLines">1</item>
     </style>
 
-    <style name="Theme.TestApplication" parent="Base.Theme.TestApplication" />
+    <style name="Theme.Garage" parent="Base.Theme.Garage" />
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowNoTitle">true</item>
@@ -34,6 +34,12 @@
         <item name="android:textSize">@dimen/_13sdp</item>
         <item name="android:fontFamily">@font/poppins_medium</item>
         <item name="android:textColor">@color/_1E274E</item>
+    </style>
+
+    <style name="EditTextTitleTextStyle">
+        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/poppins_medium</item>
+        <item name="android:textColor">@color/_75808A</item>
     </style>
 
     <style name="SectionHeaderStyle">

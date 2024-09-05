@@ -38,68 +38,81 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_layout_name"
+    <TextView
+        android:id="@+id/txt_name"
+        style="@style/EditTextTitleTextStyle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_25sdp"
         android:layout_marginEnd="@dimen/_12sdp"
-        android:hint="@string/enter_your_name"
-        app:hintTextColor="@color/_75808A"
-        app:boxBackgroundColor="@color/white"
-        app:endIconMode="none"
-        app:boxStrokeColor="@color/text_input_stroke_color"
+        android:text="@string/enter_your_name"
+        android:textColor="@color/_75808A"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_header">
+        app:layout_constraintTop_toBottomOf="@+id/layout_header" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:inputType="textPersonName" />
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/text_layout_phone"
+    <EditText
+        android:id="@+id/et_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginEnd="@dimen/_12sdp"
-        android:hint="@string/enter_your_phone_number"
-        app:boxBackgroundColor="@color/white"
-        app:endIconMode="none"
-        app:boxStrokeColor="@color/text_input_stroke_color"
-        app:hintTextColor="@color/_75808A"
+        android:autofillHints="phone"
+        android:backgroundTint="@color/text_input_stroke_color"
+        android:fontFamily="@font/poppins_medium"
+        android:inputType="textPersonName"
+        android:maxLines="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_layout_name">
+        app:layout_constraintTop_toBottomOf="@+id/txt_name"
+        tools:ignore="LabelFor" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/poppins_medium"
-            android:inputType="phone" />
-    </com.google.android.material.textfield.TextInputLayout>
+    <TextView
+        android:id="@+id/txt_phone"
+        style="@style/EditTextTitleTextStyle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:text="@string/enter_your_phone_number"
+        android:textColor="@color/_75808A"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et_name" />
+
+    <EditText
+        android:id="@+id/et_phone"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:autofillHints="phone"
+        android:backgroundTint="@color/text_input_stroke_color"
+        android:fontFamily="@font/poppins_medium"
+        android:inputType="phone"
+        android:maxLines="1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_phone"
+        tools:ignore="LabelFor" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:insetTop="0dp"
-        android:insetBottom="0dp"
         android:layout_marginStart="@dimen/_12sdp"
-        app:cornerRadius="@dimen/_8sdp"
-        android:text="@string/continue_txt"
-        android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/white"
-        android:textAllCaps="false"
-        app:backgroundTint="@color/_4B5171"
         android:layout_marginEnd="@dimen/_12sdp"
         android:layout_marginBottom="@dimen/_12sdp"
+        android:fontFamily="@font/poppins_medium"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:text="@string/continue_txt"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        app:backgroundTint="@color/_4B5171"
+        app:cornerRadius="@dimen/_8sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

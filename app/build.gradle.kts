@@ -4,7 +4,7 @@ plugins {
 }
 
 android {
-    namespace = "com.app.testapplication"
+    namespace = "com.garageKoi.garage"
     compileSdk = 34
 
     defaultConfig {

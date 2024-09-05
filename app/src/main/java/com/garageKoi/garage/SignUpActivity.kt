@@ -29,19 +29,19 @@ class SignUpActivity : BaseActivity() {
 
     private fun setTextChangeLister() = with(binding) {
         // listener for name input field
-        textLayoutName.editText?.addTextChangedListener(object : TextWatcher {
+        etName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // No action needed before text changes
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Check the input fields whenever text changes
-                val name = textLayoutName.editText?.text.toString().trim()
-                val phone = textLayoutPhone.editText?.text.toString().trim()
+                val name = etName.text.toString().trim()
+                val phone = etPhone.text.toString().trim()
                 val enableButton = name.isNotEmpty() && phone.isNotEmpty()
                 setButtonState(enableButton)
                 // error
-                if (name.isNotEmpty()) textLayoutName.error = null
+                if (name.isNotEmpty()) etName.error = null
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -50,19 +50,19 @@ class SignUpActivity : BaseActivity() {
         })
 
         // listener for phone input field
-        textLayoutPhone.editText?.addTextChangedListener(object : TextWatcher {
+        etPhone.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 // No action needed before text changes
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                 // Check the input fields whenever text changes
-                val name = textLayoutName.editText?.text.toString().trim()
-                val phone = textLayoutPhone.editText?.text.toString().trim()
+                val name = etName.text.toString().trim()
+                val phone = etPhone.text.toString().trim()
                 val enableButton = name.isNotEmpty() && phone.isNotEmpty()
                 setButtonState(enableButton)
                 // error
-                if (phone.isNotEmpty()) textLayoutPhone.error = null
+                if (phone.isNotEmpty()) etPhone.error = null
             }
 
             override fun afterTextChanged(s: Editable?) {
@@ -71,25 +71,6 @@ class SignUpActivity : BaseActivity() {
         })
     }
 
-
-    // TextWatcher to monitor changes in both input fields
-    private val textWatcher = object : TextWatcher {
-        override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-            // No action needed before text changes
-        }
-
-        override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            // Check the input fields whenever text changes
-            val name = binding.textLayoutName.editText?.text.toString().trim()
-            val phone = binding.textLayoutPhone.editText?.text.toString().trim()
-            val enableButton = name.isNotEmpty() && phone.isNotEmpty()
-            setButtonState(enableButton)
-        }
-
-        override fun afterTextChanged(s: Editable?) {
-            // No action needed after text changes
-        }
-    }
 
 
     // Function to enable or disable the button with appropriate alpha
@@ -103,19 +84,19 @@ class SignUpActivity : BaseActivity() {
     }
 
     // Function to validate phone number and proceed
-    private fun validateInputs() {
-        val phone = binding.textLayoutPhone.editText?.text.toString().trim()
+    private fun validateInputs() = with(binding){
+        val phone = etPhone.text.toString().trim()
         if (phone.length != 11 || !phone.all { it.isDigit() }) {
             // Show error on the phone input layout
-            binding.textLayoutPhone.error = getString(R.string.phone_number_does_not_have_11_digits)
+            binding.etPhone.error = getString(R.string.phone_number_does_not_have_11_digits)
         } else {
             // trigger notification
-            Utils.createNotificationChannel(this)
-            Utils.showNotification(this)
+            Utils.createNotificationChannel(this@SignUpActivity)
+            Utils.showNotification(this@SignUpActivity)
 
             // Clear any previous errors
-            binding.textLayoutPhone.error = null
-            val intent = Intent(this, PinVerificationActivity::class.java)
+            etPhone.error = null
+            val intent = Intent(this@SignUpActivity, PinVerificationActivity::class.java)
             startActivity(intent)
         }
     }
