@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
-    android:background="@color/_1E274E"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/_1E274E"
     tools:context=".SplashActivity">
 
     <TextView
@@ -14,11 +13,10 @@
         android:layout_height="wrap_content"
         android:text="@string/app_name"
         android:textColor="@color/white"
-        android:textSize="@dimen/_40sdp"
+        android:textSize="@dimen/_45sdp"
         android:theme="@style/HeaderTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>
