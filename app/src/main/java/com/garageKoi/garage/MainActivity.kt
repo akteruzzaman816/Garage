@@ -17,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MapStyleOptions
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : BaseActivity(), OnMapReadyCallback {
@@ -55,13 +56,15 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
 
     override fun onMapReady(map: GoogleMap) {
         googleMap = map
+        googleMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(this,R.raw.uber_style))
         googleMap.uiSettings.apply {
             isMyLocationButtonEnabled = false
             isTiltGesturesEnabled = false
         }
         checkLocationPermission()
-        setCustomInfoWindow()
-        addCustomMarker()
+        addCustomMarker(24.741450314569484, 89.82932144162278)
+        addCustomMarker(24.739487050434985, 89.8324128322312)
+        addCustomMarker(24.743060740972016, 89.8244501069644)
     }
 
     private fun checkLocationPermission() {
@@ -91,7 +94,6 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             location?.let {
                 val currentLatLng = LatLng(it.latitude, it.longitude)
                 googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 16f))
-//                googleMap.addMarker(MarkerOptions().position(currentLatLng).title("You are here"))
             }
         }
     }
@@ -101,8 +103,8 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(inflater))
     }
 
-    private fun addCustomMarker() {
-        val position = LatLng(24.741450314569484, 89.82932144162278)
+    private fun addCustomMarker(lat:Double,lon:Double) {
+        val position = LatLng(lat,lon)
         val markerOptions = MarkerOptions()
             .position(position)
             .title("Garage")
@@ -121,6 +123,8 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             val intent = Intent(this@MainActivity, DetailsPageActivity::class.java)
             startActivity(intent)
         }
+
+        setCustomInfoWindow()
     }
 
 
