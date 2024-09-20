@@ -74,9 +74,12 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_margin="@dimen/_10sdp"
+        android:id="@+id/fab_current"
         android:contentDescription="@string/image"
+        android:src="@drawable/ic_current_location"
+        app:fabSize="normal"
         android:layout_width="wrap_content"
-        android:backgroundTint="@color/white"
+        app:backgroundTint="@color/white"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="@+id/mapView"
         app:layout_constraintEnd_toEndOf="parent" />

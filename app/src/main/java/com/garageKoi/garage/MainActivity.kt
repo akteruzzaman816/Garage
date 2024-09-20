@@ -40,7 +40,6 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
         setContentView(binding.root)
 
 
-
         binding.apply {
             // map
             mapView.onCreate(savedInstanceState)
@@ -50,6 +49,15 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
                 val intent = Intent(this@MainActivity, AccountSettingsActivity::class.java)
                 startActivity(intent)
             }
+            fabCurrent.setOnClickListener {
+                navigateToCurrentLocation()
+            }
+        }
+    }
+
+    private fun navigateToCurrentLocation() {
+        if (::googleMap.isInitialized){
+            enableUserLocation()
         }
     }
 
