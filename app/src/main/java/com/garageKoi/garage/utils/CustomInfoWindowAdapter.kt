@@ -7,24 +7,29 @@ import com.garageKoi.garage.R
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 
-class CustomInfoWindowAdapter(private val inflater: LayoutInflater) : GoogleMap.InfoWindowAdapter {
+class CustomInfoWindowAdapter(inflater: LayoutInflater) : GoogleMap.InfoWindowAdapter {
 
-    override fun getInfoWindow(marker: Marker): View? {
-        // Use default info window frame, so return null
-        return null
+    private val window: View = inflater.inflate(R.layout.custom_marker_info_window, null)
+
+    private fun render(marker: Marker, view: View) {
+        val title = marker.title
+        val description = marker.snippet
+
+        val titleView = view.findViewById<TextView>(R.id.txt_title)
+        val descriptionView = view.findViewById<TextView>(R.id.txt_desc)
+
+//        titleView.text = title ?: ""
+//        descriptionView.text = description ?: ""
+
     }
 
-    override fun getInfoContents(marker: Marker): View? {
-        // Inflate custom info window layout
-        val view = inflater.inflate(R.layout.custom_marker_info_window, null)
+    override fun getInfoWindow(marker: Marker): View {
+        render(marker, window)
+        return window
+    }
 
-        // Set the title and snippet
-        val titleTextView = view.findViewById<TextView>(R.id.info_window_title)
-        val snippetTextView = view.findViewById<TextView>(R.id.info_window_snippet)
-
-        titleTextView.text = marker.title
-        snippetTextView.text = marker.snippet
-
-        return view
+    override fun getInfoContents(marker: Marker): View {
+        render(marker, window)
+        return window
     }
 }

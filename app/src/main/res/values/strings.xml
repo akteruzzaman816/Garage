@@ -29,4 +29,6 @@
     <string name="garage_list">Garage List</string>
     <string name="parts_shop">Parts Shop</string>
     <string name="wallet">Wallet</string>
+    <string name="show_more">Show More</string>
+    <string name="best_automobile_garage">Best Automobile Garage</string>
 </resources>

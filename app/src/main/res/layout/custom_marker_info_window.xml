@@ -1,21 +1,126 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="wrap_content"
+    android:background="@drawable/info_window_bg"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:padding="10dp">
+    android:padding="8dp">
 
+    <!-- Garage Image -->
+    <ImageView
+        android:id="@+id/garageImage"
+        android:layout_width="@dimen/_200sdp"
+        android:layout_height="@dimen/_100sdp"
+        android:contentDescription="@string/image"
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_garage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Garage Name -->
     <TextView
-        android:id="@+id/info_window_title"
+        android:id="@+id/txt_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="@string/best_automobile_garage"
+        android:textColor="@color/black"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/garageImage" />
+
+    <!-- Star Ratings -->
+    <LinearLayout
+        android:id="@+id/garageRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_title">
 
+        <!-- Add 5 Star Icons (Replace with actual icons) -->
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_star" />
+
+        <ImageView
+            android:layout_marginStart="@dimen/_2sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_star" />
+
+        <!-- Rating Value -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins_regular"
+            android:includeFontPadding="false"
+            android:text="5.0"
+            android:textColor="@color/_909598"
+            android:textSize="@dimen/_12ssp" />
+    </LinearLayout>
+
+    <!-- Opening Hours -->
     <TextView
-        android:id="@+id/info_window_snippet"
-        android:layout_width="wrap_content"
+        android:id="@+id/txt_desc"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:textColor="#000"
-        android:textSize="14sp" />
-</LinearLayout>
+        android:layout_marginTop="4dp"
+        android:text="Closes soon · 8PM · Opens 10 AM"
+        android:fontFamily="@font/poppins_medium"
+        android:textColor="@color/_909598"
+        android:textSize="@dimen/_10ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/garageRating" />
+
+    <!-- Show More Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/showMoreButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/poppins_bold"
+        android:insetTop="0dp"
+        android:minHeight="@dimen/_30sdp"
+        android:insetBottom="0dp"
+        android:text="@string/show_more"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="@dimen/_12ssp"
+        app:backgroundTint="@color/_1E274E"
+        app:cornerRadius="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_desc" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

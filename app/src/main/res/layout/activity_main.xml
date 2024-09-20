@@ -39,12 +39,12 @@
 
         <ImageView
             android:id="@+id/img_profile"
-            android:layout_width="@dimen/_25sdp"
+            android:layout_width="@dimen/_22sdp"
             android:layout_height="0dp"
             android:layout_marginEnd="@dimen/_12sdp"
             android:adjustViewBounds="true"
             android:contentDescription="@string/image"
-            android:src="@drawable/profile_icon"
+            android:src="@drawable/ic_menu"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

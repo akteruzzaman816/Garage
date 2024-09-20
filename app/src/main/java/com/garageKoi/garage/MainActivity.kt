@@ -195,6 +195,13 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
 
             googleMap.addMarker(markerOptions)
         }
+
+        googleMap.setOnInfoWindowClickListener {
+            val intent = Intent(this@MainActivity, DetailsPageActivity::class.java)
+            startActivity(intent)
+        }
+
+        setCustomInfoWindow()
     }
 
 
