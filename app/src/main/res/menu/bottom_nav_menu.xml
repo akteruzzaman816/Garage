@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_nav_home"
+        android:title="@string/home" />
+
+    <item
+        android:id="@+id/nav_garage_list"
+        android:icon="@drawable/ic_nav_garage"
+        android:title="@string/garage_list" />
+
+    <item
+        android:id="@+id/nav_shop"
+        android:icon="@drawable/ic_nav_shop"
+        android:title="@string/parts_shop" />
+
+    <item
+        android:id="@+id/nav_wallet"
+        android:icon="@drawable/ic_nav_wallet"
+        android:title="@string/wallet" />
+</menu>
