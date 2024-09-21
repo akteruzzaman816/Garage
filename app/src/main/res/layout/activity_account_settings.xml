@@ -17,84 +17,6 @@
             android:id="@+id/toolbar"
             layout="@layout/custom_toolbar" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_profile_info"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar">
-
-            <ImageView
-                android:id="@+id/img_profile"
-                android:layout_width="@dimen/_50sdp"
-                android:layout_height="@dimen/_50sdp"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_12sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/image"
-                android:src="@drawable/profile_icon"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/txt_name"
-                style="@style/TitleTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:ellipsize="end"
-                android:text="@string/md_rashed_pervez"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_profile"
-                app:layout_constraintTop_toTopOf="@+id/img_profile" />
-
-            <TextView
-                android:id="@+id/txt_phone"
-                style="@style/NormalTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_16sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:ellipsize="end"
-                android:text="@string/_01922549551"
-                android:textColor="@color/_909598"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_profile"
-                app:layout_constraintTop_toBottomOf="@+id/txt_name" />
-
-            <ImageView
-                android:id="@+id/img_star"
-                android:layout_width="@dimen/_16sdp"
-                android:layout_height="@dimen/_16sdp"
-                android:layout_marginStart="@dimen/_14sdp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/image"
-                android:src="@drawable/star"
-                app:layout_constraintStart_toEndOf="@+id/img_profile"
-                app:layout_constraintTop_toBottomOf="@+id/txt_phone" />
-
-            <TextView
-                android:id="@+id/txt_rating"
-                style="@style/NormalTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_2sdp"
-                android:layout_marginEnd="@dimen/_8sdp"
-                android:ellipsize="end"
-                android:text="@string/_4_9"
-                android:textColor="@color/_909598"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_star"
-                app:layout_constraintTop_toBottomOf="@+id/txt_phone" />
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_notification"
@@ -104,7 +26,7 @@
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_profile_info">
+            app:layout_constraintTop_toBottomOf="@+id/toolbar">
 
             <ImageView
                 android:id="@+id/img_notification"
@@ -189,6 +111,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/txt_account" />
 
             <TextView
+                android:id="@+id/txt_profile"
                 style="@style/SectionHeaderStyle"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -204,14 +127,14 @@
                 app:layout_constraintTop_toTopOf="@+id/img_user" />
 
             <ImageView
-                android:id="@+id/img_digital_payment"
+                android:id="@+id/img_accessibility"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/image"
-                android:src="@drawable/digital_payments"
+                android:src="@drawable/ic_accessibility"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_user" />
 
@@ -224,11 +147,11 @@
                 android:ellipsize="end"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:text="@string/digital_payment"
-                app:layout_constraintBottom_toBottomOf="@+id/img_digital_payment"
+                android:text="@string/accessibility"
+                app:layout_constraintBottom_toBottomOf="@+id/img_accessibility"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_digital_payment"
-                app:layout_constraintTop_toTopOf="@+id/img_digital_payment" />
+                app:layout_constraintStart_toEndOf="@+id/img_accessibility"
+                app:layout_constraintTop_toTopOf="@+id/img_accessibility" />
 
             <ImageView
                 android:id="@+id/img_language"
@@ -240,7 +163,7 @@
                 android:contentDescription="@string/image"
                 android:src="@drawable/language"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_digital_payment" />
+                app:layout_constraintTop_toBottomOf="@+id/img_accessibility" />
 
             <TextView
                 style="@style/SectionHeaderStyle"
@@ -258,7 +181,7 @@
                 app:layout_constraintTop_toTopOf="@+id/img_language" />
 
             <ImageView
-                android:id="@+id/img_permission"
+                android:id="@+id/img_service_history"
                 android:layout_width="@dimen/_20sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_12sdp"
@@ -266,7 +189,7 @@
                 android:layout_marginBottom="@dimen/_16sdp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/image"
-                android:src="@drawable/permissions"
+                android:src="@drawable/ic_service_history"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_language" />
@@ -280,11 +203,11 @@
                 android:ellipsize="end"
                 android:includeFontPadding="false"
                 android:maxLines="1"
-                android:text="@string/permissions"
-                app:layout_constraintBottom_toBottomOf="@+id/img_permission"
+                android:text="@string/service_history"
+                app:layout_constraintBottom_toBottomOf="@+id/img_service_history"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_permission"
-                app:layout_constraintTop_toTopOf="@+id/img_permission" />
+                app:layout_constraintStart_toEndOf="@+id/img_service_history"
+                app:layout_constraintTop_toTopOf="@+id/img_service_history" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -375,11 +298,9 @@
                 android:layout_height="@dimen/_20sdp"
                 android:layout_marginStart="@dimen/_12sdp"
                 android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_16sdp"
                 android:adjustViewBounds="true"
                 android:contentDescription="@string/image"
                 android:src="@drawable/policies"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/img_faq" />
 
@@ -398,62 +319,6 @@
                 app:layout_constraintStart_toEndOf="@+id/img_terms"
                 app:layout_constraintTop_toTopOf="@+id/img_terms" />
 
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_more"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_6sdp"
-            android:background="@color/white"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_help">
-
-
-            <TextView
-                android:id="@+id/txt_more"
-                style="@style/NormalTextStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_14sdp"
-                android:ellipsize="end"
-                android:includeFontPadding="false"
-                android:text="@string/more"
-                android:textAllCaps="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="AllCaps" />
-
-            <ImageView
-                android:id="@+id/img_rate_us"
-                android:layout_width="@dimen/_20sdp"
-                android:layout_height="@dimen/_20sdp"
-                android:layout_marginStart="@dimen/_12sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:adjustViewBounds="true"
-                android:contentDescription="@string/image"
-                android:src="@drawable/rate_us"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_more" />
-
-            <TextView
-                style="@style/SectionHeaderStyle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_8sdp"
-                android:layout_marginEnd="@dimen/_12sdp"
-                android:ellipsize="end"
-                android:includeFontPadding="false"
-                android:maxLines="1"
-                android:text="@string/rate_us"
-                app:layout_constraintBottom_toBottomOf="@+id/img_rate_us"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/img_rate_us"
-                app:layout_constraintTop_toTopOf="@+id/img_rate_us" />
-
             <ImageView
                 android:id="@+id/img_refer"
                 android:layout_width="@dimen/_20sdp"
@@ -466,7 +331,7 @@
                 android:src="@drawable/refer"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/img_rate_us" />
+                app:layout_constraintTop_toBottomOf="@+id/img_terms" />
 
             <TextView
                 style="@style/SectionHeaderStyle"
@@ -486,6 +351,7 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layout_logout"
             android:layout_width="0dp"
@@ -494,7 +360,7 @@
             android:background="@color/white"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_more">
+            app:layout_constraintTop_toBottomOf="@+id/layout_help">
 
             <ImageView
                 android:id="@+id/img_logout"

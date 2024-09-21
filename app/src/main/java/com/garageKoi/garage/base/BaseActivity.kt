@@ -5,11 +5,12 @@ import android.os.Bundle
 import android.view.View
 import android.view.WindowInsetsController
 import androidx.appcompat.app.AppCompatActivity
+import com.garageKoi.garage.utils.SharedPref
 
 open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        // Other initialization logic
+        SharedPref.init(this)
     }
 
     override fun onPostCreate(savedInstanceState: Bundle?) {

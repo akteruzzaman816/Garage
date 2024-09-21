@@ -5,17 +5,16 @@ import android.animation.ValueAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.AccelerateDecelerateInterpolator
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.garageKoi.garage.base.BaseActivity
 import com.garageKoi.garage.databinding.ActivitySplashBinding
+import com.garageKoi.garage.utils.SharedPref
 
 @SuppressLint("CustomSplashScreen")
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
     private lateinit var binding: ActivitySplashBinding
 
     // Dark view to add light effect
@@ -73,9 +72,16 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun goToDashboardActivity() {
-        val intent = Intent(this, SignUpActivity::class.java)
-        startActivity(intent)
-        finish()
+        // check already logged in or not
+        if (SharedPref.read(SharedPref.JWT_TOKEN,"")?.isNotEmpty() == true){
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }else{
+            val intent = Intent(this, SignUpActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
     }
 
     private fun startShadowAnimation() {

@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import com.garageKoi.garage.base.BaseActivity
 import com.garageKoi.garage.databinding.ActivityPinVerificationBinding
+import com.garageKoi.garage.utils.SharedPref
 
 class PinVerificationActivity : BaseActivity() {
     private lateinit var binding: ActivityPinVerificationBinding
@@ -18,6 +19,8 @@ class PinVerificationActivity : BaseActivity() {
         binding.apply {
             // continue
             btnContinue.setOnClickListener {
+                // save jwt
+                SharedPref.write(SharedPref.JWT_TOKEN, "token")
                 val intent = Intent(this@PinVerificationActivity, MainActivity::class.java)
                 startActivity(intent)
                 finish()

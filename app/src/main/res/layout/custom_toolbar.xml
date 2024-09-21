@@ -22,7 +22,7 @@
         style="@style/HeaderTextStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/account_amp_settings"
+        android:text="@string/menu"
         app:layout_constraintBottom_toBottomOf="@+id/img_back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

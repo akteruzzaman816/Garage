@@ -31,4 +31,12 @@
     <string name="wallet">Wallet</string>
     <string name="show_more">Show More</string>
     <string name="best_automobile_garage">Best Automobile Garage</string>
+    <string name="menu">Menu</string>
+    <string name="vehicle_info">Vehicle Info</string>
+    <string name="brand">Brand</string>
+    <string name="model">Model</string>
+    <string name="manufacture_year">Manufacture Year :</string>
+    <string name="car_photo">Car Photo :</string>
+    <string name="accessibility">Accessibility</string>
+    <string name="service_history">Service History</string>
 </resources>
