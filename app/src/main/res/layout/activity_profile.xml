@@ -162,6 +162,14 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="AllCaps" />
 
+            <ImageView
+                android:layout_width="@dimen/_26sdp"
+                android:layout_height="@dimen/_26sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:src="@drawable/ic_edit_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/txt_vehicle_info" />
+
 
             <TextView
                 android:id="@+id/txt_brand"

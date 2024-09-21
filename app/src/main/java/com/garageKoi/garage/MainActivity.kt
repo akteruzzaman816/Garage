@@ -1,10 +1,16 @@
 package com.garageKoi.garage
 
 import android.Manifest
+import android.animation.AnimatorSet
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.os.Handler
+import android.os.SystemClock
 import android.view.LayoutInflater
+import android.view.View
+import android.view.animation.BounceInterpolator
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import com.garageKoi.garage.base.BaseActivity
@@ -18,6 +24,7 @@ import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MapStyleOptions
+import com.google.android.gms.maps.model.Marker
 import com.google.android.gms.maps.model.MarkerOptions
 
 class MainActivity : BaseActivity(), OnMapReadyCallback {
@@ -107,30 +114,55 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
     private fun setCustomInfoWindow() {
         val inflater = LayoutInflater.from(this)
         googleMap.setInfoWindowAdapter(CustomInfoWindowAdapter(inflater))
-    }
 
-    private fun addCustomMarker(lat:Double,lon:Double) {
-        val position = LatLng(lat,lon)
-        val markerOptions = MarkerOptions()
-            .position(position)
-            .title("Garage")
-            .snippet("sarishabari, Jamalpur")
+        googleMap.setOnMarkerClickListener { marker ->
+            // Move the camera to center on the marker
+            centerCameraOnMarker(marker)
 
-        // If using a custom marker layout, uncomment the following lines
-         val customMarkerView = layoutInflater.inflate(R.layout.custom_marker, null)
-         val markerBitmap = Utils.createBitmapFromView(customMarkerView)
-         markerOptions.icon(BitmapDescriptorFactory.fromBitmap(markerBitmap))
+            // Start the bounce animation on the marker
+            bounceMarker(marker)
 
-        val marker = googleMap.addMarker(markerOptions)
-        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(position, 12f))
-        // Show the info window immediately after adding the marker
-        marker?.showInfoWindow()
+            // Show the info window after the bounce
+            marker.showInfoWindow()
+
+            true // Return true to indicate that we handled the event
+        }
+
         googleMap.setOnInfoWindowClickListener {
+            // Handle InfoWindow click events here
             val intent = Intent(this@MainActivity, DetailsPageActivity::class.java)
             startActivity(intent)
         }
+    }
 
-        setCustomInfoWindow()
+    private fun centerCameraOnMarker(marker: Marker) {
+        // Animate the camera to center on the marker
+        val cameraUpdate = CameraUpdateFactory.newLatLng(marker.position)
+        googleMap.animateCamera(cameraUpdate, 500, null) // Adjust duration if needed
+    }
+
+    private fun bounceMarker(marker: Marker) {
+        val handler = Handler()
+        val start = SystemClock.uptimeMillis()
+        val duration = 1000L // 1.5 seconds for bounce
+
+        val interpolator = BounceInterpolator()
+
+        handler.post(object : Runnable {
+            override fun run() {
+                val elapsed = SystemClock.uptimeMillis() - start
+                val t = Math.max(
+                    1 - interpolator.getInterpolation(elapsed.toFloat() / duration),
+                    0f
+                )
+                marker.setAnchor(0.5f, 1.0f + 2 * t) // Adjust anchor to simulate bounce
+
+                if (t > 0.0) {
+                    // Keep animating until time is up
+                    handler.postDelayed(this, 16)
+                }
+            }
+        })
     }
 
 
@@ -204,11 +236,7 @@ class MainActivity : BaseActivity(), OnMapReadyCallback {
             googleMap.addMarker(markerOptions)
         }
 
-        googleMap.setOnInfoWindowClickListener {
-            val intent = Intent(this@MainActivity, DetailsPageActivity::class.java)
-            startActivity(intent)
-        }
-
+        // setup custom info window of marker
         setCustomInfoWindow()
     }
 
