@@ -16,8 +16,8 @@ object Utils {
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            val channelId = "your_channel_id"
-            val channelName = "Your Channel Name"
+            val channelId = "garage_channel_id"
+            val channelName = "Garage Channel"
             val channelDescription = "Your Channel Description"
             val importance = NotificationManager.IMPORTANCE_HIGH
             val channel = NotificationChannel(channelId, channelName, importance).apply {
@@ -30,7 +30,7 @@ object Utils {
     }
 
     fun showNotification(context: Context,title:String,message:String) {
-        val channelId = "your_channel_id"
+        val channelId = "garage_channel_id"
         val notificationManager = NotificationManagerCompat.from(context)
         // Cancel all previous notifications
         notificationManager.cancelAll()

@@ -1,7 +1,9 @@
 package com.garageKoi.garage
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
+import android.view.View
+import androidx.recyclerview.widget.GridLayoutManager
+import com.garageKoi.garage.adapter.GarageTypeListAdapter
 import com.garageKoi.garage.base.BaseActivity
 import com.garageKoi.garage.databinding.ActivityDetailsPageBinding
 
@@ -11,12 +13,18 @@ class DetailsPageActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityDetailsPageBinding.inflate(layoutInflater)
+
         setContentView(binding.root)
 
-        binding.apply {
-            toolbar.imgBack.setOnClickListener { finish() }
-            toolbar.txtTitle.text = getString(R.string.details_page)
-        }
+        // setup garage type adapter
+        setupGarageTypeAdapter()
+
+    }
+
+    private fun setupGarageTypeAdapter() {
+        val items = listOf("Car Workshop","Truck Workshop","Bike Workshop")
+        val listAdapter = GarageTypeListAdapter(this, items)
+        binding.rvGarageType.adapter = listAdapter
 
     }
 }

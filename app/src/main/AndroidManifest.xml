@@ -21,6 +21,7 @@
             android:name=".ProfileActivity"
             android:exported="false" />
         <activity
+            android:theme="@style/DetailsPageTheme"
             android:name=".DetailsPageActivity"
             android:exported="false" />
 

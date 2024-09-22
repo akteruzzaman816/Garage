@@ -39,4 +39,6 @@
     <string name="car_photo">Car Photo :</string>
     <string name="accessibility">Accessibility</string>
     <string name="service_history">Service History</string>
+    <string name="garage_type">Garage Type</string>
+    <string name="request_for_service">Request for service</string>
 </resources>
