@@ -7,6 +7,7 @@ import androidx.annotation.RequiresApi
 import com.garageKoi.garage.base.BaseActivity
 import com.garageKoi.garage.databinding.ActivityAccountSettingsBinding
 import com.garageKoi.garage.utils.SharedPref
+import com.garageKoi.garage.utils.Utils
 
 class AccountSettingsActivity : BaseActivity() {
     private lateinit var binding: ActivityAccountSettingsBinding
@@ -23,6 +24,11 @@ class AccountSettingsActivity : BaseActivity() {
             }
             // profile
             txtProfile.setOnClickListener {
+                // notification
+                // trigger notification
+                Utils.createNotificationChannel(this@AccountSettingsActivity)
+                Utils.showNotification(this@AccountSettingsActivity,getString(R.string.app_name),"Please provide your car's basic information to help the mechanic offer better service.")
+
                 startActivity(Intent(this@AccountSettingsActivity, ProfileActivity::class.java))
             }
 

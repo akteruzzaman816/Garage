@@ -4,13 +4,19 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import androidx.activity.result.contract.ActivityResultContracts
 import com.garageKoi.garage.base.BaseActivity
 import com.garageKoi.garage.databinding.ActivitySignUpBinding
 import com.garageKoi.garage.utils.Utils
+import android.Manifest
+import android.os.Build
+import androidx.annotation.RequiresApi
+
 
 class SignUpActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySignUpBinding
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
@@ -23,6 +29,11 @@ class SignUpActivity : BaseActivity() {
         // Set OnClickListener for the Continue button
         binding.btnContinue.setOnClickListener {
             validateInputs()
+        }
+
+        // check for notification permission
+        if (!Utils.checkNotificationPermission(this)) {
+            requestNotificationPermission()
         }
 
     }
@@ -92,13 +103,29 @@ class SignUpActivity : BaseActivity() {
         } else {
             // trigger notification
             Utils.createNotificationChannel(this@SignUpActivity)
-            Utils.showNotification(this@SignUpActivity)
+            Utils.showNotification(this@SignUpActivity,"OTP","Use OTP: 1234 to proceed with Garage. This OTP will be valid for 3 minutes.")
 
             // Clear any previous errors
             etPhone.error = null
             val intent = Intent(this@SignUpActivity, PinVerificationActivity::class.java)
             startActivity(intent)
         }
+    }
+
+    @RequiresApi(Build.VERSION_CODES.TIRAMISU)
+    private fun requestNotificationPermission() {
+        val requestPermissionLauncher = registerForActivityResult(
+            ActivityResultContracts.RequestPermission()
+        ) { isGranted: Boolean ->
+            if (isGranted) {
+                // Permission is granted, proceed with notification-related tasks
+                // e.g., show notifications
+            } else {
+                // Permission denied, handle accordingly
+                requestNotificationPermission()
+            }
+        }
+        requestPermissionLauncher.launch(Manifest.permission.POST_NOTIFICATIONS)
     }
 
 }
