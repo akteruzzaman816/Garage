@@ -4,7 +4,9 @@ import android.Manifest
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Build
 import androidx.core.app.ActivityCompat
 import androidx.core.app.NotificationCompat
@@ -13,6 +15,11 @@ import androidx.core.content.ContextCompat
 import com.garageKoi.garage.R
 
 object Utils {
+
+    fun callPhone(context: Context, phone: String) {
+        context.startActivity(Intent(Intent.ACTION_DIAL).setData(Uri.parse("tel:$phone")))
+    }
+
 
     fun createNotificationChannel(context: Context) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
