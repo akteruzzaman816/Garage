@@ -45,11 +45,18 @@ class SplashActivity : BaseActivity() {
             ContextCompat.getColor(this@SplashActivity, R.color.white)
         ) // Assuming the color is defined in `colors.xml`
 
-        // Basic animation similar to moving the label's center
-        label.animate().apply {
-            duration = 1000
-            translationYBy(this@SplashActivity.resources.displayMetrics.widthPixels.toFloat()) // Move by a specific amount
-            start() // Start the animation
+        label.post {
+            // Get the screen height
+            val screenHeight = this@SplashActivity.resources.displayMetrics.heightPixels
+            // Calculate the Y position for centering the label
+            val centerY = (screenHeight / 2) - (label.height / 2)
+
+            // Animate the label to the calculated center position
+            label.animate().apply {
+                duration = 1000
+                translationY(centerY.toFloat()) // Move to the center of the screen
+                start() // Start the animation
+            }
         }
 
         label.alpha = 0f
@@ -118,7 +125,7 @@ class SplashActivity : BaseActivity() {
         animator.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {}
             override fun onAnimationEnd(animation: Animator) {
-                goToDashboardActivity()
+//                goToDashboardActivity()
             }
             override fun onAnimationCancel(animation: Animator) {}
             override fun onAnimationRepeat(animation: Animator) {}
