@@ -125,7 +125,7 @@ class SplashActivity : BaseActivity() {
         animator.addListener(object : Animator.AnimatorListener {
             override fun onAnimationStart(animation: Animator) {}
             override fun onAnimationEnd(animation: Animator) {
-//                goToDashboardActivity()
+                goToDashboardActivity()
             }
             override fun onAnimationCancel(animation: Animator) {}
             override fun onAnimationRepeat(animation: Animator) {}

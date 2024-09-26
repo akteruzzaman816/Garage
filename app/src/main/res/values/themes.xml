@@ -44,13 +44,13 @@
     </style>
 
     <style name="SectionHeaderStyle">
-        <item name="android:textSize">@dimen/_12sdp</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/_1E274E</item>
     </style>
 
     <style name="NormalTextStyle">
-        <item name="android:textSize">@dimen/_11sdp</item>
+        <item name="android:textSize">@dimen/_11ssp</item>
         <item name="android:fontFamily">@font/poppins_regular</item>
         <item name="android:textColor">@color/_1E274E</item>
     </style>
